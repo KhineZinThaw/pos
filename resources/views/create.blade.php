@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="off" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $item->name) }}" required autocomplete="off" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="off" autofocus>
+                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $item->price) }}" required autocomplete="off" autofocus>
 
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                             <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Size') }}</label>
 
                             <div class="col-md-6">
-                                <input id="size" type="text" class="form-control @error('size') is-invalid @enderror" name="size" value="{{ old('size') }}" required autocomplete="off" autofocus>
+                                <input id="size" type="text" class="form-control @error('size') is-invalid @enderror" name="size" value="{{ old('size', $item->size) }}" required autocomplete="off" autofocus>
 
                                 @error('size')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
 
                             <div class="col-md-6">
                                 <textarea name="description" id="description" cols="30" rows="1"  class="form-control @error('description') is-invalid @enderror"
-                                value="{{ old('description') }}" required autocomplete="off" autofocus></textarea>
+                                value="{{ old('description', $item->description) }}" required autocomplete="off" autofocus></textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

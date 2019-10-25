@@ -16,7 +16,7 @@
 
                             <div class="col-md-6">
                                 <input id="code-id" type="text" class="form-control @error('code_id') is-invalid 
-                                @enderror" name="code_id" value="{{ old('code_id') }}" required autocomplete="off" autofocus>
+                                @enderror" name="code_id" value="{{ old('code_id',$order->code_id) }}" required autocomplete="off" autofocus>
 
                                 @error('code_id')
                                     <span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
 
                             <div class="col-md-6">
                                 <input id="quality" type="text" class="form-control @error('quality') is-invalid
-                                 @enderror" name="quality" value="{{ old('quality') }}" required autocomplete="off" autofocus>
+                                 @enderror" name="quality" value="{{ old('quality',$order->quality) }}" required autocomplete="off" autofocus>
 
                                 @error('quality')
                                     <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
 
                             <div class="col-md-6">
                                 <input id="total" type="text" class="form-control @error('total') is-invalid 
-                                @enderror" name="total" value="{{ old('total') }}" required autocomplete="off" autofocus>
+                                @enderror" name="total" value="{{ old('total',$order->total) }}" required autocomplete="off" autofocus>
 
                                 @error('total')
                                     <span class="invalid-feedback" role="alert">

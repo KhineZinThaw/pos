@@ -9,14 +9,14 @@ class itemController extends Controller
     public function index()
     {
         $items = item::all();
-        return view('index', compact('items'));
+        return view('item.index', compact('items'));
     }
 
    
     public function create()
     {
         $item = new item();
-        return view('create', compact('item'));
+        return view('item.create', compact('item'));
     }
 
     public function store(Request $request)
@@ -34,18 +34,22 @@ class itemController extends Controller
     
     public function edit($id)
     {
-        //
+        
+        $item = item::find($id);
+        return view('item.create',compact('item'));
     }
 
    
     public function update(Request $request, $id)
     {
-        //
+        item::find($id)->update($request->all());
+        return redirect('/item');
     }
 
    
     public function destroy($id)
     {
-        //
+        item::find($id)->delete();
+        return redirect('/item');
     }
 }

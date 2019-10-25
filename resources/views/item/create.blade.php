@@ -5,18 +5,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Customer') }}</div>
+                <div class="card-header">{{ __('Item') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{url('/customer')}}">
+                    @if(!$item->id)
+                    <form method="POST" action="{{url('/item')}}">
                         @csrf
-
+                    @else
+                    <form method="POST" action="{{url('/item/'.$item->id)}}">
+                        @csrf
+                        @method('patch')
+                    @endif
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $item->name) }}" required autocomplete="off" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $item->name) }}" required autocomplete="off" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -27,12 +31,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="off" autofocus>
+                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $item->price) }}" required autocomplete="off" autofocus>
 
-                                @error('email')
+                                @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -41,48 +45,40 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Size') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="off" autofocus>
+                                <input id="size" type="text" class="form-control @error('size') is-invalid @enderror" name="size" value="{{ old('size', $item->size) }}" required autocomplete="off" autofocus>
 
-                                @error('password')
+                                @error('size')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
-                            <label for="phone_no" class="col-md-4 col-form-label text-md-right">{{ __('Phone No:') }}</label>
-
+                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                            
                             <div class="col-md-6">
-                                <input id="phone_no" type="text" class="form-control @error('phone_no') is-invalid @enderror" name="phone_no" value="{{ old('phone_no') }}" required autocomplete="off" autofocus>
-
-                                @error('phone_no')
+                                <textarea name="description" id="description" cols="30" rows="1"  class="form-control @error('description') is-invalid @enderror"
+                             required autocomplete="off" autofocus>{{ old('description', $item->description) }}</textarea>
+                                @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
-
-                            <div class="col-md-6">
-                                <textarea name="address" id="address" cols="30" rows="1"  class="form-control @error('address') is-invalid @enderror"
-                                value="{{ old('address') }}" required autocomplete="off" autofocus></textarea>
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input type="file" name="" id="">
+                                </div>
                             </div>
-                        </div>
-
-                        
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
