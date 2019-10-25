@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/testing', function() {return 'work';});
 Route::resource('/item', 'itemController');
 Route::resource('/category', 'CategoryController');
 Route::resource('/order', 'OrderController');
