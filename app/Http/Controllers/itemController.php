@@ -22,13 +22,17 @@ class itemController extends Controller
 
     public function store(Request $request)
     {
+        
         # validate
         request()->validate([
             'name' => 'required|max:200',
             'price'=> 'required|integer',
             'size'=> 'required|integer',
-            'description'=> 'required'
+            'description'=> 'required',
+            'image'=>'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
+        
+
 
        
         UploadService::fileUpload($request->image, '/public/image');
@@ -65,7 +69,8 @@ class itemController extends Controller
             'name'=>'required|max:200',
             'price'=>'required|integer',
             'size'=> 'required|integer',
-            'description'=> 'required'
+            'description'=> 'required',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         
         UploadService::checkFileExist($request->image, item::find($id)->image,'/public/image');
