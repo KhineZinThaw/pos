@@ -9,10 +9,10 @@
 
                 <div class="card-body">
                     @if(!$item->id)
-                    <form method="POST" action="{{url('/item')}}">
+                    <form method="POST" enctype="multipart/form-data" action="{{url('/item')}}">
                         @csrf
                     @else
-                    <form method="POST" action="{{url('/item/'.$item->id)}}">
+                    <form method="POST" enctype="multipart/form-data"  action="{{url('/item/'.$item->id)}}">
                         @csrf
                         @method('patch')
                     @endif
@@ -20,7 +20,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $item->name) }}" required autocomplete="off" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $item->name) }}"   autocomplete="off" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $item->price) }}" required autocomplete="off" autofocus>
+                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $item->price) }}"   autocomplete="off" autofocus>
 
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
                             <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Size') }}</label>
 
                             <div class="col-md-6">
-                                <input id="size" type="text" class="form-control @error('size') is-invalid @enderror" name="size" value="{{ old('size', $item->size) }}" required autocomplete="off" autofocus>
+                                <input id="size" type="text" class="form-control @error('size') is-invalid @enderror" name="size" value="{{ old('size', $item->size) }}"   autocomplete="off" autofocus>
 
                                 @error('size')
                                     <span class="invalid-feedback" role="alert">
@@ -63,7 +63,7 @@
                             
                             <div class="col-md-6">
                                 <textarea name="description" id="description" cols="30" rows="1"  class="form-control @error('description') is-invalid @enderror"
-                             required autocomplete="off" autofocus>{{ old('description', $item->description) }}</textarea>
+                               autocomplete="off" autofocus>{{ old('description', $item->description) }}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -73,10 +73,10 @@
                         </div>
 
                         <div class="form-group row">
-                                <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                                <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
     
                                 <div class="col-md-6">
-                                    <input type="file" name="" id="">
+                                    <input type="file" name="image" id="image">
                                 </div>
                             </div>
 

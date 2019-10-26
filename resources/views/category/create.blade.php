@@ -20,7 +20,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name',$category->name) }}" required autocomplete="off" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name',$category->name) }}"    autocomplete="off" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
 
                             <div class="col-md-6">
                                 <textarea name="description" id="description" cols="30" rows="1"  class="form-control @error('description') is-invalid @enderror"
-                               required autocomplete="off" autofocus> {{ old('description',$category->name) }}" </textarea>
+                                  autocomplete="off" autofocus> {{ old('description',$category->description) }}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

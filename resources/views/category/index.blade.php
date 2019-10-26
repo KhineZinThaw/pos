@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div>
+  <a href="/category/create" class="btn btn-success float-right"> + New</a>
+</div>
 <table class="table table-striped table-dark">
     <thead>
       <tr>

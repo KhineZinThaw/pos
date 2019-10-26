@@ -36,7 +36,16 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+         #validate
+         request()->validate([
+            'name'=> 'required|max:200',
+            'email'=> 'required|email|unique:users,email',
+            'password'=> 'required',
+            'phone_no'=> 'required',
+            'address'=> 'required|max:200'
+        ]);
+        #add to database
         Customer::create($request->all());
         return redirect('/customer');
     }
@@ -60,7 +69,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = Customer::find($id);
+        return view('customer.create',compact('customer'));
     }
 
     /**
@@ -72,7 +82,17 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            #validate
+            request()->validate([
+                'name'=> 'required|max:200',
+                'email'=> 'required|email|unique:users,email',
+                'password'=> 'required',
+                'phone_no'=> 'required',
+                'address'=> 'required|max:200'
+            ]);
+            #add to database
+            Category::find($id)->update($request->all());
+            return redirect('/category');
     }
 
     /**
@@ -83,6 +103,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Customer::find($id)->delete();
+        return redirect('/customer');
     }
 }

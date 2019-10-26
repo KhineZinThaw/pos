@@ -36,7 +36,13 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        #validate
+        request()->validate([
+            'name'=> 'required|max:200',
+            'description'=> 'required'
+        ]);
+        #add to database
         Category::create($request->all());
         return redirect('/category');
     }
@@ -72,7 +78,13 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
+         #validate
+         request()->validate([
+            'name'=> 'required|max:200',
+            'description'=> 'required'
+        ]);
+        #add to database
         Category::find($id)->update($request->all());
         return redirect('/category');
     }

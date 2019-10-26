@@ -16,7 +16,7 @@
 
                             <div class="col-md-6">
                                 
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $item->name) }}" required autocomplete="off" autofocus>
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $customer->name) }}"   autocomplete="off" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="off" autofocus>
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email',$customer->email) }}"   autocomplete="off" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="off" autofocus>
+                                <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password',$customer->password) }}"   autocomplete="off" autofocus>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                             <label for="phone_no" class="col-md-4 col-form-label text-md-right">{{ __('Phone No:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone_no" type="text" class="form-control @error('phone_no') is-invalid @enderror" name="phone_no" value="{{ old('phone_no') }}" required autocomplete="off" autofocus>
+                                <input id="phone_no" type="text" class="form-control @error('phone_no') is-invalid @enderror" name="phone_no" value="{{ old('phone_no',$customer->phone_no) }}"   autocomplete="off" autofocus>
 
                                 @error('phone_no')
                                     <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
 
                             <div class="col-md-6">
                                 <textarea name="address" id="address" cols="30" rows="1"  class="form-control @error('address') is-invalid @enderror"
-                                value="{{ old('address') }}" required autocomplete="off" autofocus></textarea>
+                               autocomplete="off" autofocus>{{ old('address',$customer->address) }}</textarea>
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

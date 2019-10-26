@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\item;
 use Illuminate\Http\Request;
+use App\Service\UploadService;
 
 class itemController extends Controller
 {
@@ -21,7 +22,22 @@ class itemController extends Controller
 
     public function store(Request $request)
     {
-        item::create($request->all());
+        # validate
+        request()->validate([
+            'name' => 'required|max:200',
+            'price'=> 'required|integer',
+            'size'=> 'required|integer',
+            'description'=> 'required'
+        ]);
+
+       
+        UploadService::fileUpload($request->image, '/public/image');
+      
+        # add to database
+        $item = $request->all();
+        $item['image'] = $item['image']->getClientOriginalName();
+        
+        item::create($item);
         return redirect('/item');
     }
 
@@ -33,16 +49,35 @@ class itemController extends Controller
 
     
     public function edit($id)
-    {
+    {   
         
+
+        #add to database
         $item = item::find($id);
         return view('item.create',compact('item'));
     }
 
    
     public function update(Request $request, $id)
-    {
-        item::find($id)->update($request->all());
+    {   
+         #validate
+         request()->validate([
+            'name'=>'required|max:200',
+            'price'=>'required|integer',
+            'size'=> 'required|integer',
+            'description'=> 'required'
+        ]);
+        
+        UploadService::checkFileExist($request->image, item::find($id)->image,'/public/image');
+      
+        # add to database
+        $item = $request->all();
+        $item['image'] = $item['image']->getClientOriginalName();
+        
+        
+
+        #add to database
+        item::find($id)->update($item);
         return redirect('/item');
     }
 

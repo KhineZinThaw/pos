@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div>
+  <a href="/item/create" class="btn btn-success float-right" >+ New Item</a>
+</div>
 <table class="table table-striped table-dark">
     <thead>
       <tr>
@@ -9,7 +11,9 @@
         <th scope="col">Name</th>
         <th scope="col">Price</th>
         <th scope="col">Size</th>
+        <th scope="col">Image</th>
         <th scope="col">Action</th>
+
       </tr>
     </thead>
     <tbody>
@@ -19,6 +23,11 @@
         <td>{{$item->name}}</td>
         <td>{{$item->price}} </td>
         <td>{{$item->size}}</td>
+        <td>
+        <div>
+        <img width="100" height="100" src="/storage/image/{{ $item->image }}" alt="item-image">
+          </div>
+        </td>
         <td>
         <form method="POST" action="/item/{{ $item->id }}">
           @csrf
@@ -33,5 +42,4 @@
       @endforeach
     </tbody>
   </table>
-
-  @endsection
+@endsection
