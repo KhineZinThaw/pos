@@ -22,6 +22,16 @@ Route::resource('/category', 'CategoryController');
 Route::resource('/order', 'OrderController');
 Route::resource('/customer', 'CustomerController');
 
+Route::get('admin-panel', function(){
+    return view('admin.dashboard');
+});
+Route::get('admin-register', function(){
+    return view('admin.register');
+});
+Route::get('admin-login', function(){
+    return view('admin.login');
+});
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
