@@ -20,6 +20,8 @@ class CreateItemsTable extends Migration
             $table->string('size');
             $table->text('description');
             $table->string('image');
+            $table->integer('category_id');
+            
             $table->timestamps();
         });
     }

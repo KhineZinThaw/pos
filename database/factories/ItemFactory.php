@@ -10,6 +10,11 @@ $factory->define(item::class, function (Faker $faker) {
         'name' => $faker->word(),
         'price' => 1000,
         'size' => '23',
-        'description' => $faker->paragraph()
+        'image'=> $faker->imageUrl(200,200),
+        'description' => $faker->paragraph(),
+        'category_id' => function() {
+            return factory('App\Category')->create()->id;
+        }
+        
     ];
 });

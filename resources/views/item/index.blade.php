@@ -41,5 +41,10 @@
       </tr>
       @endforeach
     </tbody>
-  </table>
+    </table>
+    <div class="container">
+      @foreach ($items as $item)
+      @endforeach
+  </div>
+   {{ $items->links() }}
 @endsection

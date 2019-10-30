@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\item;
+use DB;
 use Illuminate\Http\Request;
 use App\Service\UploadService;
 
@@ -9,7 +10,8 @@ class itemController extends Controller
 {
     public function index()
     {
-        $items = item::all();
+        $items = item::paginate(10);
+
         return view('item.index', compact('items'));
     }
 

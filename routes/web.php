@@ -21,6 +21,7 @@ Route::resource('/item', 'itemController');
 Route::resource('/category', 'CategoryController');
 Route::resource('/order', 'OrderController');
 Route::resource('/customer', 'CustomerController');
+Route::resource('/profile', 'ProfileController');
 
 Route::get('admin-panel', function(){
     return view('admin.dashboard');
@@ -30,6 +31,14 @@ Route::get('admin-register', function(){
 });
 Route::get('admin-login', function(){
     return view('admin.login');
+});
+
+Route::get('items', function () {
+    $items = App\item::paginate(10);
+
+    $items->withPath('custom/url');
+
+    
 });
 
 

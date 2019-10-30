@@ -10,6 +10,11 @@ $factory->define(Order::class, function (Faker $faker) {
         'code' =>23,
         'quality' => $faker->word(),
         'total' => '5000',
-        'customer_id' => 5
+        'customer_id' => function() {
+            return factory('App\Customer')->create()->id;
+        },
+        'item_id' => function() {
+            return factory('App\item')->create()->id;
+        }
     ];
 });
