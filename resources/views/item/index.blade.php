@@ -13,8 +13,7 @@
         <th scope="col">Size</th>
         <th scope="col">Image</th>
         <th scope="col">Action</th>
-
-      </tr>
+       </tr>
     </thead>
     <tbody>
         @foreach ($items as $item)          
@@ -38,6 +37,8 @@
         <a class="btn btn-info" href="/item/{{$item->id}}/edit">Update</a>
         {{-- <a href="{{ route('item.update', ['id'=>$item->id]) }}"></a> --}}
         </td>
+        
+    
       </tr>
       @endforeach
     </tbody>

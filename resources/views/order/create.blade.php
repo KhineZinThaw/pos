@@ -12,13 +12,13 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="code_id" class="col-md-4 col-form-label text-md-right">{{ __('Code_id') }}</label>
+                            <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Code') }}</label>
 
                             <div class="col-md-6">
-                                <input id="code-id" type="text" class="form-control @error('code_id') is-invalid 
-                                @enderror" name="code_id" value="{{ old('code_id',$order->code_id) }}" required autocomplete="off" autofocus>
+                                <input id="code" type="text" class="form-control @error('code') is-invalid 
+                                @enderror" name="code" value="{{ old('code',$order->code) }}" required autocomplete="off" autofocus>
 
-                                @error('code_id')
+                                @error('code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

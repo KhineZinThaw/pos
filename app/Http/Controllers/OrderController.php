@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use \App\Order;
 
@@ -15,7 +14,76 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
-        return view('order.index', compact('ordres'));
+        return view('order.index', compact('orders'));
+    }
+    public function cart()
+    {
+        $orders = Order::all();
+        return view('item.cart', compact('orders'));
+    }
+
+    public function addToCart($id)
+    {
+        $order = Order::find($id);
+        dd($order);
+ 
+        if(!$order) {
+ 
+            abort(404);
+ 
+        }
+ 
+        $cart = session()->get('cart');
+ 
+        
+        if(!$cart) {
+ 
+            $cart = [
+                    $id => [
+                        'code' =>23,
+                         'quality' => $faker->word(),
+                         'total' => '5000',
+                        'customer_id' => function() {
+                            return factory('App\Customer')->create()->id;
+                         },
+                        'item_id' => function() {
+                            return factory('App\item')->create()->id;
+                        }
+                    ]
+            ];
+ 
+            session()->put('cart', $cart);
+ 
+            return redirect()->back()->with('success', 'Order added to cart successfully!');
+        }
+ 
+        
+        if(isset($cart[$id])) {
+ 
+            $cart[$id]['total']++;
+ 
+            session()->put('cart', $cart);
+ 
+            return redirect()->back()->with('success', 'Order added to cart successfully!');
+ 
+        }
+ 
+        
+        $cart[$id] = [
+            'code' =>23,
+            'quality' => $faker->word(),
+            'total' => '5000',
+           'customer_id' => function() {
+               return factory('App\Customer')->create()->id;
+            },
+           'item_id' => function() {
+               return factory('App\item')->create()->id;
+           }
+        ];
+ 
+        session()->put('cart', $cart);
+ 
+        return redirect()->back()->with('success', 'Order added to cart successfully!');
     }
 
     /**
@@ -26,7 +94,7 @@ class OrderController extends Controller
     public function create()
     {
         $order = new Order();
-        return view('create',compact('order'));
+        return view('order.create',compact('order'));
     }
 
     /**

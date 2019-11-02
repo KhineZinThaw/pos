@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.home');
 });
 
 Route::get('/testing', function() {return 'work';});
@@ -24,6 +24,7 @@ Route::resource('/customer', 'CustomerController');
 Route::resource('/profile', 'ProfileController');
 
 Route::get('admin-panel', function(){
+    
     return view('admin.dashboard');
 });
 Route::get('admin-register', function(){
@@ -32,6 +33,10 @@ Route::get('admin-register', function(){
 Route::get('admin-login', function(){
     return view('admin.login');
 });
+
+
+ 
+Route::get('add-to-cart/{id}', 'OrderController@addToCart');
 
 Route::get('items', function () {
     $items = App\item::paginate(10);
