@@ -1,9 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div>
-  <a href="/item/create" class="btn btn-success float-right" >+ New Item</a>
-</div>
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-header">{{ __('Item') }}
+              
+            
+                  <a href="/item/create" class="btn btn-success float-right" >+ New Item</a>
+             
+              
+              </div>
+
+              <div class="card-body">
+
 <table class="table table-striped table-dark">
     <thead>
       <tr>
@@ -48,4 +59,12 @@
       @endforeach
   </div>
    {{ $items->links() }}
+
+
+   </div>
+  </div>
+      </div>
+  </div>
+</div>
+</div>
 @endsection
