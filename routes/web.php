@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('client.home');
-});
+Route::get('/', 'PageController@index');
 
 Route::get('/categories',function() {
     return view('client.categories');
