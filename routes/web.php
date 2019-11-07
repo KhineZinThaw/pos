@@ -43,6 +43,27 @@ Route::get('/contacts',function() {
     return view('client.contacts');
 });
 
+Route::get('/about',function() {
+    return view('client.about');
+});
+
+Route::get('/blog',function() {
+    return view('client.blog');
+});
+
+Route::get('/element',function() {
+    return view('client.element');
+});
+
+Route::get('/singleBlog',function() {
+    return view('client.singleBlog');
+});
+
+Route::get('/tracking',function() {
+    return view('client.tracking');
+});
+
+
 
 Route::get('/testing', function() {return 'work';});
 Route::get('/testing3', function(){return 'work';});

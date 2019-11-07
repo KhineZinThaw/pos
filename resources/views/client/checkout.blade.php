@@ -1,11 +1,12 @@
 @extends('layouts.master')
 
-@section('content')
-<!doctype html>
-<html lang="zxx">
+@section('title')
+    Check Out
+@endsection
 
-<body>
-     <!--================Home Banner Area =================-->
+@section('content')
+
+  <!--================Home Banner Area =================-->
   <!-- breadcrumb start-->
   <section class="breadcrumb breadcrumb_bg">
     <div class="container">
@@ -252,11 +253,4 @@
       </div>
   </section>
   <!--::subscribe_area part end::-->
-
- 
-
- 
-</body>
-
-</html>
-@endsection
+  @endsection
